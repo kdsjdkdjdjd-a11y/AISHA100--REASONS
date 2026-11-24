@@ -1,0 +1,390 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>100 Reasons Why I Love You</title>
+
+<style>
+
+*{box-sizing:border-box}
+
+body{
+
+margin:0;min-height:100vh;display:flex;align-items:center;
+
+justify-content:center;padding:24px;
+
+font-family:Georgia,serif;
+
+background:linear-gradient(135deg,#fff0f4,#fce1e9,#fff7f2);
+
+color:#744653;text-align:center;
+
+}
+
+
+.container{width:100%;max-width:440px}
+
+h1{font-size:27px;letter-spacing:2px;margin:0 0 10px}
+
+.subtitle{font-size:17px;margin-bottom:25px}
+
+.jar{
+
+width:230px;height:270px;margin:25px auto 22px;
+
+border:4px solid #d99cac;border-radius:35px 35px 48px 48px;
+
+background:rgba(255,255,255,.48);
+
+box-shadow:inset 0 0 25px #fff,0 12px 25px #dba9b6;
+
+position:relative;display:flex;align-items:center;
+
+justify-content:center;overflow:hidden;
+
+}
+
+.jar:before{
+
+content:"";position:absolute;top:-9px;width:150px;height:20px;
+
+border:4px solid #d99cac;border-radius:9px;background:#f6dce4;
+
+}
+
+.jar:after{
+
+content:"♡";position:absolute;bottom:13px;
+
+font-size:28px;color:#d18a9d;
+
+}
+
+.papers{display:flex;flex-wrap:wrap;justify-content:center;align-content:center;gap:7px;padding:20px}
+
+.paper{width:35px;height:43px;background:#fff8f0;border:1px solid #e8c6cf;border-radius:4px;transform:rotate(var(--r));box-shadow:1px 2px 3px #d9b6bf}
+
+button{
+
+border:0;border-radius:30px;padding:14px 25px;
+
+background:#bd7188;color:white;font-size:16px;
+
+font-family:Georgia,serif;cursor:pointer;
+
+box-shadow:0 5px 12px #d9a8b5;
+
+}
+
+button:active{transform:scale(.97)}
+
+.count{margin-top:17px;font-size:14px;color:#966575}
+
+.note{
+
+display:none;margin:22px auto 0;padding:24px 20px;
+
+max-width:360px;min-height:145px;background:#fffaf5;
+
+border:2px solid #e7bdc9;border-radius:15px;
+
+box-shadow:0 8px 20px #dcb8c1;font-size:19px;
+
+line-height:1.6;color:#865365;
+
+}
+
+.note.show{display:flex;align-items:center;justify-content:center}
+
+.small{font-size:13px;margin-top:20px;color:#a77b88}
+
+</style>
+
+</head>
+
+<body>
+
+<main class="container">
+
+<h1>100 REASONS WHY I LOVE YOU</h1>
+
+<div class="subtitle">FOR MY DEAREST AISHA ♡</div>
+
+<div class="jar"><div class="papers" id="papers"></div></div>
+
+<button onclick="openNote()">PICK A LITTLE NOTE ♡</button>
+
+<div class="count" id="count">100 LITTLE REASONS JUST FOR YOU</div>
+
+<div class="note" id="note">YOUR FIRST LITTLE NOTE WILL APPEAR HERE ♡</div>
+
+<div class="small">MADE WITH SO MUCH LOVE ♡</div>
+
+</main>
+
+<script>
+
+const reasons = [
+
+"YOU MAKE MY LIFE SO MUCH HAPPIER",
+
+"YOU ARE ONE OF THE BEST THINGS THAT EVER HAPPENED TO ME",
+
+"I LOVE THE WAY YOU MAKE ME SMILE",
+
+"YOU MAKE EVEN ORDINARY DAYS FEEL SPECIAL",
+
+"I AM SO GRATEFUL THAT I MET YOU",
+
+"YOU HAVE A VERY SPECIAL PLACE IN MY HEART",
+
+"YOU MAKE DISTANCE FEEL LESS DIFFICULT",
+
+"I LOVE EVERY LITTLE THING ABOUT YOU",
+
+"YOU ARE MY FAVORITE PERSON TO TALK TO",
+
+"YOUR EXISTENCE MAKES MY WORLD BETTER",
+
+"I LOVE HOW COMFORTABLE I FEEL WITH YOU",
+
+"YOU ARE SOMEONE I NEVER WANT TO LOSE",
+
+"YOU MAKE ME FEEL LUCKY EVERY SINGLE DAY",
+
+"I LOVE YOUR BEAUTIFUL SOUL",
+
+"YOU ARE ALWAYS WORTH THE WAIT",
+
+"I LOVE HOW YOU CAN CHANGE MY MOOD SO EASILY",
+
+"YOU MAKE ME FEEL UNDERSTOOD",
+
+"I AM HAPPY THAT OUR PATHS CROSSED",
+
+"YOU ARE MORE PRECIOUS TO ME THAN YOU KNOW",
+
+"I LOVE HAVING YOU IN MY LIFE",
+
+"YOU MAKE ME LOOK FORWARD TO TOMORROW",
+
+"I LOVE YOUR WAY OF THINKING",
+
+"YOU ARE MY FAVORITE NOTIFICATION",
+
+"I CAN NEVER GET TIRED OF YOU",
+
+"YOU MAKE MY HEART FEEL FULL",
+
+"I LOVE HOW YOU ARE SIMPLY YOURSELF",
+
+"YOU ARE A BEAUTIFUL PART OF MY STORY",
+
+"I WISH I COULD GIVE YOU ALL THE HAPPINESS YOU DESERVE",
+
+"YOU MAKE ME FEEL CLOSE TO YOU EVEN FROM FAR AWAY",
+
+"I LOVE THE PERSON YOU ARE",
+
+"YOU ARE SOMEONE I CAN ALWAYS BE MYSELF AROUND",
+
+"I LOVE OUR LITTLE MOMENTS TOGETHER",
+
+"YOU MAKE MY DAYS A LITTLE BRIGHTER",
+
+"I AM PROUD OF THE PERSON YOU ARE BECOMING",
+
+"YOU DESERVE ALL THE LOVE IN THE WORLD",
+
+"I LOVE HEARING ABOUT YOUR DAY",
+
+"I LOVE HOW YOU MAKE EVEN THE SMALLEST MOMENTS FEEL SPECIAL",
+
+"I LOVE HOW MUCH YOU MEAN TO ME",
+
+"YOU MAKE ME BELIEVE IN BEAUTIFUL CONNECTIONS",
+
+"I WOULD CHOOSE YOU AS MY FRIEND AGAIN AND AGAIN",
+
+"YOU ARE ONE OF MY FAVORITE PEOPLE IN THIS WORLD",
+
+"I LOVE YOUR LAUGH",
+
+"YOU MAKE ME FEEL AT HOME",
+
+"I NEVER REGRET GETTING TO KNOW YOU",
+
+"YOU ARE A REASON BEHIND SO MANY OF MY SMILES",
+
+"I LOVE HOW OUR CONVERSATIONS NEVER FEEL BORING",
+
+"YOU MAKE ME FEEL APPRECIATED",
+
+"I AM THANKFUL FOR EVERY MEMORY WITH YOU",
+
+"YOU ARE MY LITTLE PIECE OF HAPPINESS",
+
+"I LOVE YOU MORE THAN WORDS CAN EXPLAIN",
+
+"YOU MAKE MY WORLD FEEL LESS LONELY",
+
+"I LOVE THE WAY YOU CARE ABOUT THE PEOPLE YOU LOVE",
+
+"YOU ARE SOMEONE I WANT TO KEEP IN MY FUTURE",
+
+"I LOVE EVERY SECOND I SPEND TALKING TO YOU",
+
+"YOU MAKE ME FEEL LIKE I HAVE SOMEONE SPECIAL",
+
+"I LOVE YOUR LITTLE HABITS AND QUIRKS",
+
+"YOU ARE A GIFT I NEVER KNEW I NEEDED",
+
+"I LOVE THAT I CAN SHARE MY HAPPINESS WITH YOU",
+
+"YOU MAKE THE DISTANCE WORTH IT",
+
+"I HOPE YOU NEVER FORGET HOW LOVED YOU ARE",
+
+"YOU ARE MY FAVORITE PART OF SO MANY DAYS",
+
+"I LOVE HOW YOU MAKE ME FEEL IMPORTANT",
+
+"YOU ARE SOMEONE I WILL ALWAYS ROOT FOR",
+
+"I LOVE YOUR KIND HEART",
+
+"YOU MAKE ME WISH TIME WOULD SLOW DOWN",
+
+"I AM GLAD I GET TO KNOW YOU MORE EVERY DAY",
+
+"YOU ARE THE KIND OF PERSON PEOPLE FEEL LUCKY TO HAVE",
+
+"I LOVE HOW YOU MAKE LITTLE THINGS MEAN SO MUCH",
+
+"YOU ARE MY FAVORITE HELLO AND MY HARDEST GOODBYE",
+
+"I WANT TO BE THERE FOR ALL YOUR HAPPY MOMENTS",
+
+"YOU MAKE ME FEEL BLESSED",
+
+"I LOVE THE WAY YOU EXIST IN MY LIFE",
+
+"YOU ARE MORE THAN JUST AN ONLINE FRIEND TO ME",
+
+"I LOVE HOW NATURAL OUR FRIENDSHIP FEELS",
+
+"YOU MAKE ME WANT TO COLLECT MORE MEMORIES",
+
+"I LOVE THAT I CAN MISS YOU AND STILL FEEL CLOSE TO YOU",
+
+"YOU ARE A PERSON I WILL ALWAYS BE THANKFUL FOR",
+
+"I LOVE SEEING YOU HAPPY",
+
+"YOU MAKE MY HEART SOFT",
+
+"I HOPE WE NEVER BECOME STRANGERS",
+
+"YOU ARE MY FAVORITE PERSON TO SHARE RANDOM THOUGHTS WITH",
+
+"I LOVE HOW MUCH JOY YOU BRING INTO MY LIFE",
+
+"YOU MAKE ME FEEL LIKE OUR FRIENDSHIP IS SOMETHING RARE",
+
+"I WILL ALWAYS BE HAPPY THAT I FOUND YOU",
+
+"YOU ARE SOMEONE I WANT TO GROW WITH",
+
+"I LOVE THE THOUGHT OF MAKING MORE MEMORIES WITH YOU",
+
+"YOU MAKE EVERY LITTLE CONVERSATION MATTER",
+
+"I HOPE LIFE TREATS YOU AS BEAUTIFULLY AS YOU DESERVE",
+
+"YOU ARE A PERSON I NEVER WANT TO TAKE FOR GRANTED",
+
+"I LOVE HAVING A REASON TO SMILE BECAUSE OF YOU",
+
+"I WANT TO CELEBRATE ALL YOUR LITTLE AND BIG WINS",
+
+"YOU MAKE MY HEART HAPPY IN THE SIMPLEST WAYS",
+
+"I LOVE THAT YOU ARE YOU",
+
+"I HOPE WE GET TO MEET AND MAKE REAL MEMORIES TOGETHER",
+
+"YOU ARE SOMEONE I WANT BESIDE ME FOR YEARS TO COME",
+
+"I WILL ALWAYS HAVE A SOFT SPOT FOR YOU",
+
+"YOU HAVE MADE MY LIFE MORE BEAUTIFUL JUST BY BEING IN IT",
+
+"I AM SO HAPPY THAT THE WORLD BROUGHT ME TO YOU",
+
+"NO MATTER HOW FAR WE ARE YOU WILL ALWAYS MATTER TO ME",
+
+"BECAUSE YOU ARE AISHA AND THAT IS MORE THAN ENOUGH"
+
+];
+
+const papers=document.getElementById("papers");
+
+for(let i=0;i<30;i++){
+
+const p=document.createElement("div");
+
+p.className="paper";
+
+p.style.setProperty("--r",(Math.random()*30-15)+"deg");
+
+papers.appendChild(p);
+
+}
+
+let remaining=[...reasons];
+
+let shown=0;
+
+function openNote(){
+
+if(remaining.length===0){
+
+document.getElementById("note").textContent="THAT WAS ALL 100 REASONS... BUT I HAVE A MILLION MORE ♡";
+
+document.getElementById("note").classList.add("show");
+
+document.getElementById("count").textContent="100 REASONS OPENED ♡";
+
+return;
+
+}
+
+const index=Math.floor(Math.random()*remaining.length);
+
+const reason=remaining.splice(index,1)[0];
+
+shown++;
+
+document.getElementById("note").textContent=reason;
+
+document.getElementById("note").classList.add("show");
+
+document.getElementById("count").textContent=shown+" OF 100 LITTLE REASONS OPENED ♡";
+
+}
+
+</script>
+
+</body>
+
+</html>
